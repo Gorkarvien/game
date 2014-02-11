@@ -2,12 +2,12 @@
 
 namespace engine
 {
-  Graphics::Graphics()
+  GraphicsEngine::GraphicsEngine()
   {
-    window = new sf::RenderWindow(sf::VideoMode(200,200), "SFML works !");
+    window = new sf::RenderWindow(sf::VideoMode(800,600), "the game port : XXXX");
   }
   
-  int Graphics::draw()
+  int GraphicsEngine::update()
   {
     window->clear();
     // tmp

@@ -1,7 +1,8 @@
-#include "engine/GlobalEngine.h"
+#include "engine/GameEngine.h"
 #include <SFML/Graphics.hpp>
 
 int main(int argc, char **argv)
 {
-  return engine::main_routine();
+//ajouter gestion d'argument
+  return engine::main_loop();
 }

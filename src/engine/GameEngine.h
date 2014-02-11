@@ -1,10 +1,11 @@
-#ifndef GAMEENGINE_H
-#define GAMEENGINE_H
-#include <SFML/System.hpp>
+#ifndef GAME_ENGINE_H
+#define GAME_ENGINE_H
 
 namespace engine
 {
-  int update_game(sf::Time &elapsed);
+  const int MAXFPS = 60;
+  int initialization();
+  int main_loop();
 }
 
 #endif

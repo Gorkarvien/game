@@ -1,22 +1,22 @@
-#ifndef GRAPHICSENGINE_H
-#define GRAPHICSENGINE_H
+#ifndef GRAPHICS_ENGINE_H
+#define GRAPHICS_ENGINE_H
 
 #include <SFML/Graphics.hpp>
 
 namespace engine
 {
-  class Graphics
+  class GraphicsEngine
   {
   protected:
     sf::RenderWindow *window;
     
   public:
-    Graphics();
-    ~Graphics()
+    GraphicsEngine();
+    ~GraphicsEngine()
     {
       delete window;
     }
-    int draw();
+    int update();
     sf::RenderWindow *render_window() {return window;}
   };
 }

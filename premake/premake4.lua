@@ -2,13 +2,16 @@ solution "theGame"
 	configurations {"Debug","Release"}
 
 	--a comment
-	project "engine"
+	project "TFranchementGros"
 		kind "WindowedApp"
 		language "C++"
 		location "../build"
 		files {"../src/**.h", "../src/**.cpp"}
-		includedirs {"../lib/SFML-2.1/include"}
-		--libdirs {"../lib/SFML-2.1/build/lib"}
+		includedirs {	"../lib/SFML-2.1/include"
+				,"../src/engine"
+				,"../src/gameplay"}
+
+		libdirs {"../lib/SFML-2.1/build/lib"}
 		-- link ? we install sfml on linux host ?
 		links {	"sfml-audio", 
 		       	"sfml-network", 
