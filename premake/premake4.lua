@@ -9,7 +9,8 @@ solution "theGame"
 		files {"../src/**.h", "../src/**.cpp"}
 		includedirs {	"../lib/SFML-2.1/include"
 				,"../src/engine"
-				,"../src/gameplay"}
+				,"../src/gameplay"
+				,"../src/module"}
 
 		libdirs {"../lib/SFML-2.1/build/lib"}
 		-- link ? we install sfml on linux host ?

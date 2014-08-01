@@ -5,13 +5,17 @@
 
 namespace engine
 {
+
+
+
   class GraphicsEngine
   {
   protected:
     sf::RenderWindow *window;
-    
+
   public:
-    GraphicsEngine();
+      GraphicsEngine();
+      static GraphicsEngine* CreateGraphicsEngine();
     ~GraphicsEngine()
     {
       delete window;
