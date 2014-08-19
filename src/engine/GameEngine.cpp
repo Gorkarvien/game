@@ -4,6 +4,7 @@
 #include "InputsEngine.h"
 #include "DebugModule.h"
 #include <SFML/System.hpp>
+#include <iostream>
 
 
 namespace engine
@@ -30,10 +31,11 @@ namespace engine
         {
             if(event.type == sf::Event::Closed)
             window->close();
-            if(event.type == sf::Event::KeyPressed ||
-               event.type == sf::Event::KeyReleased ||
-               event.type == sf::Event::MouseMoved||
-               event.type == sf::Event::MouseButtonPressed ||
+            if(event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) 
+            {
+				inputsEngine->proceedEvent(event.key);
+            }
+            else if(event.type == sf::Event::MouseMoved|| event.type == sf::Event::MouseButtonPressed ||
                event.type == sf::Event::MouseButtonReleased )
             {
                 inputsEngine->proceedEvent(event);
@@ -56,7 +58,6 @@ namespace engine
 	elapsed_time = sf::seconds(1.f / MAXFPS);
       }
 //debuginfo...???
-
 
     }
     delete graphics_engine;

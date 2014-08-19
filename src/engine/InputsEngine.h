@@ -16,6 +16,7 @@ namespace engine
     ~InputsEngine();
     int update();
     void proceedEvent(sf::Event);
+	void proceedEvent(sf::Event::KeyEvent);
   };
 }
 #endif
