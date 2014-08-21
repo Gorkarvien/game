@@ -3,11 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace TFG{
+	class GameActor;
+}
+
 namespace engine
 {
-
-
-
   class GraphicsEngine
   {
   protected:
@@ -20,7 +21,7 @@ namespace engine
     {
       delete window;
     }
-    int update();
+    int update(TFG::GameActor& bob);
     sf::RenderWindow *render_window() {return window;}
   };
 }

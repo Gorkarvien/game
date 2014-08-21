@@ -5,6 +5,7 @@
 #include "DebugModule.h"
 #include <SFML/System.hpp>
 #include <iostream>
+#include "GameActor.h"
 
 
 namespace engine
@@ -21,9 +22,10 @@ namespace engine
     sf::Clock clock;
     sf::Time elapsed_time;
     GraphicsEngine* graphics_engine = new GraphicsEngine();
-    InputsEngine* inputsEngine = new InputsEngine();
     sf::RenderWindow *window = graphics_engine->render_window();
     module::DebugModule* debug = new module::DebugModule();
+	TFG::GameActor* bob = new TFG::GameActor();
+    InputsEngine* inputsEngine = new InputsEngine(*bob); 
     while(true)
     {
         sf::Event event;
@@ -33,7 +35,7 @@ namespace engine
             window->close();
             if(event.type == sf::Event::KeyPressed || event.type == sf::Event::KeyReleased) 
             {
-				inputsEngine->proceedEvent(event.key);
+				inputsEngine->proceedEvent(event);//todo clean and merge all event or split further
             }
             else if(event.type == sf::Event::MouseMoved|| event.type == sf::Event::MouseButtonPressed ||
                event.type == sf::Event::MouseButtonReleased )
@@ -47,9 +49,11 @@ namespace engine
 	break;
       }
       elapsed_time = clock.restart();
-      graphics_engine->update();
       debug->update(elapsed_time);
-      //gameplay->update(elapsed_time);
+	  //update gameplay
+      TFG::update(elapsed_time);//???
+	  bob->update(elapsed_time);//move in a game word variable and update in function above?
+      graphics_engine->update(*bob);
 
       elapsed_time = clock.getElapsedTime();
       if(elapsed_time.asSeconds() < 1.f / MAXFPS)//if we are too quick

@@ -1,4 +1,5 @@
 #include "GraphicsEngine.h"
+#include "GameActor.h"
 
 namespace engine
 {
@@ -16,18 +17,15 @@ namespace engine
     //pomme_graphEngine = this;
   }
 
-  int GraphicsEngine::update()
+  int GraphicsEngine::update(TFG::GameActor& bob)
   {
     window->clear();
     // tmp
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
-    sf::RectangleShape bob(sf::Vector2f(50.f,50.f));
-    bob.setFillColor(sf::Color::Red);
-    bob.setPosition(75.f,75.f);
     // end tmp
     window->draw(shape);
-    window->draw(bob);
+    window->draw(*(bob.gablou));
     window->display();
     return 0;
   }
