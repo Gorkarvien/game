@@ -17,7 +17,6 @@ namespace TFG
 
 	void GameActor::update(sf::Time _elasped_time)
 	{
-		sf::RectangleShape* gab=dynamic_cast<sf::RectangleShape*>(m_shape);
 		float offsetX=0,offsetY=0;
 		if(m_moveUp){
 			offsetY-=m_speed*_elasped_time.asSeconds();
@@ -31,7 +30,7 @@ namespace TFG
 		if(m_moveRight){
 			offsetX+=m_speed*_elasped_time.asSeconds();
 		}
-		gab->move(offsetX, offsetY);
+		dynamic_cast<sf::RectangleShape*>(m_shape)->move(offsetX, offsetY);
 
 	}
 
