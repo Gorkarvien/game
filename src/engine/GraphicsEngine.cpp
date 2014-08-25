@@ -25,7 +25,7 @@ namespace engine
     shape.setFillColor(sf::Color::Green);
     // end tmp
     window->draw(shape);
-    window->draw(*(bob.gablou));
+    window->draw(bob);
     window->display();
     return 0;
   }

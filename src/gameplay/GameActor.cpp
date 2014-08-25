@@ -10,14 +10,14 @@ namespace TFG
 	m_moveRight	(false),
 	m_speed	(25)//px/s ?
 	{
-		gablou = new sf::RectangleShape(sf::Vector2f(50.f,50.f));
-		dynamic_cast<sf::RectangleShape*>(gablou)->setFillColor(sf::Color::Red);
-		dynamic_cast<sf::RectangleShape*>(gablou)->setPosition(75.f,75.f);
+		m_shape = new sf::RectangleShape(sf::Vector2f(50.f,50.f));
+		dynamic_cast<sf::RectangleShape*>(m_shape)->setFillColor(sf::Color::Red);
+		dynamic_cast<sf::RectangleShape*>(m_shape)->setPosition(75.f,75.f);
 	}
 
 	void GameActor::update(sf::Time _elasped_time)
 	{
-		sf::RectangleShape* gab=dynamic_cast<sf::RectangleShape*>(gablou);
+		sf::RectangleShape* gab=dynamic_cast<sf::RectangleShape*>(m_shape);
 		float offsetX=0,offsetY=0;
 		if(m_moveUp){
 			offsetY-=m_speed*_elasped_time.asSeconds();
@@ -35,9 +35,15 @@ namespace TFG
 
 	}
 
+	void GameActor::draw(sf::RenderTarget& target, sf::RenderStates states) const
+	{
+		target.draw(*m_shape, states);
+	}
+
+
 	GameActor::~GameActor()
 	{
-		delete gablou;
+		delete m_shape;
 	}
 	
 }

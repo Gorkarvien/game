@@ -9,19 +9,21 @@ namespace TFG{
 
 	//a la place d'un element drawable game actor devrai heriter de drawable
 
-	class GameActor
+	class GameActor : public sf::Drawable
 	{
 		public:
 			GameActor();
 			~GameActor();
 
 			void update(sf::Time);
+			virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 			void setmoveUp		(bool b){m_moveUp = b;}
 			void setmoveDown	(bool b){m_moveDown = b;}
 			void setmoveRight	(bool b){m_moveRight = b;}
 			void setmoveLeft	(bool b){m_moveLeft = b;}
 
-			sf::Drawable* gablou;
+			sf::Drawable* m_shape;
 
 		protected:
 
