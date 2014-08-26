@@ -15,7 +15,7 @@ namespace TFG{
 			GameActor();
 			~GameActor();
 
-			void update(sf::Time);
+			void update(int);
 			virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 			void setmoveUp		(bool b){m_moveUp = b;}

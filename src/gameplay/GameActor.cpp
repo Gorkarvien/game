@@ -15,20 +15,20 @@ namespace TFG
 		dynamic_cast<sf::RectangleShape*>(m_shape)->setPosition(75.f,75.f);
 	}
 
-	void GameActor::update(sf::Time _elasped_time)
+	void GameActor::update(int _elasped_time)
 	{
 		float offsetX=0,offsetY=0;
 		if(m_moveUp){
-			offsetY-=m_speed*_elasped_time.asSeconds();
+			offsetY-=m_speed*_elasped_time/1000;
 		}
 		if(m_moveDown){
-			offsetY+=m_speed*_elasped_time.asSeconds();
+			offsetY+=m_speed*_elasped_time/1000;
 		}
 		if(m_moveLeft){
-			offsetX-=m_speed*_elasped_time.asSeconds();
+			offsetX-=m_speed*_elasped_time/1000;
 		}
 		if(m_moveRight){
-			offsetX+=m_speed*_elasped_time.asSeconds();
+			offsetX+=m_speed*_elasped_time/1000;
 		}
 		dynamic_cast<sf::RectangleShape*>(m_shape)->move(offsetX, offsetY);
 
