@@ -10,11 +10,11 @@
 
 namespace engine
 {
-	int initialization()
+	int GameEngine::initialization()
 	{
 		return 0;
 	}
-	void processInput(sf::RenderWindow * window,InputsEngine* inputsEngine)
+	void GameEngine::processInput(sf::RenderWindow * window,InputsEngine* inputsEngine)
 	{
 
 		sf::Event event;
@@ -34,7 +34,7 @@ namespace engine
         }
 	}
 
-  int main_loop()
+  int GameEngine::main_loop()
   {
 	int frameSkiped=0;
 	int gameLag=0;//lag beetween real time and game time

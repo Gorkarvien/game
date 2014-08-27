@@ -4,5 +4,10 @@
 int main(int argc, char **argv)
 {
 //ajouter gestion d'argument
-  return engine::main_loop();
+
+	engine::GameEngine gameEngine;
+	gameEngine.initialization();
+	gameEngine.main_loop();
+
+  return 0; 
 }
