@@ -3,15 +3,19 @@
 #include "GameplayEngine.h"
 #include "InputsEngine.h"
 #include "DebugModule.h"
-#include <SFML/System.hpp>
 #include <iostream>
-#include "GameActor.h"
 
 
 namespace engine
 {
 	int GameEngine::initialization()
 	{
+		m_graphicsEngine = new GraphicsEngine();
+		m_gameplayEngine = new TFG::GameplayEngine();
+		m_window = m_graphicsEngine->render_window();
+		debug = new module::DebugModule();
+		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
+		
 		return 0;
 	}
 	void GameEngine::processInput(sf::RenderWindow * window,InputsEngine* inputsEngine)
@@ -36,43 +40,35 @@ namespace engine
 
   int GameEngine::main_loop()
   {
+	sf::Time elapsed_time;
 	int frameSkiped=0;
 	int gameLag=0;//lag beetween real time and game time
 
     bool stop = false;
-    sf::Clock clock;
-    sf::Time elapsed_time;
-    GraphicsEngine* graphics_engine = new GraphicsEngine();
-    sf::RenderWindow *window = graphics_engine->render_window();
-    module::DebugModule* debug = new module::DebugModule();
-	TFG::GameActor* bob = new TFG::GameActor();
-    InputsEngine* inputsEngine = new InputsEngine(*bob); 
 
-	clock.restart();
+	m_clock.restart();
     while(true)
     {
-		elapsed_time = clock.restart();
+		elapsed_time = m_clock.restart();
 		frameSkiped = 0;
 		gameLag += elapsed_time.asMilliseconds();
         std::cout <<elapsed_time.asMilliseconds() << std::endl;
 
-		processInput(window,inputsEngine);
+		processInput(m_window,m_inputsEngine);
 
  		while(gameLag >= MS_PER_UPDATE && frameSkiped < MAX_FRAME_SKIP)
 		{
          std::cout << "game_update" << std::endl;
-			//update gameplay
-			TFG::update(elapsed_time);//???
-			bob->update(MS_PER_UPDATE);//move in a game word variable and update in function above?
+			m_gameplayEngine->update(MS_PER_UPDATE);
 			frameSkiped ++;
 			gameLag-=MS_PER_UPDATE;
 		}
 
-		graphics_engine->update(*bob);
+		m_graphicsEngine->update(m_gameplayEngine->getActor());
 		debug->update(elapsed_time);
 
       //pour empecher un bug de temp d'update nul en ms
-	  elapsed_time = clock.getElapsedTime();
+	  elapsed_time = m_clock.getElapsedTime();
       if(elapsed_time.asSeconds() < 1.f / MAXFPS)//if we are too quick
       {
 	sf::sleep(sf::seconds(1.f / MAXFPS - elapsed_time.asSeconds()));
@@ -81,13 +77,13 @@ namespace engine
 //debuginfo...???
        //  std::cout << "render update" << std::endl;
 
-      if(!window->isOpen() || stop)
+      if(!m_window->isOpen() || stop)
       {
          std::cout << "shutdown" << std::endl;
 	break;
       }
     }
-    delete graphics_engine;
+    delete m_graphicsEngine;
     return 0;
   }
 }

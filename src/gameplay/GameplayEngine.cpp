@@ -1,9 +1,26 @@
 #include "GameplayEngine.h"
+#include "GameActor.h"
 
 namespace TFG
 {
-  int update(sf::Time &elapsed)
+	GameplayEngine::GameplayEngine()
+	{
+		this->init();
+	}
+
+	void GameplayEngine::init(){
+		bob= new GameActor();
+	}
+
+  void GameplayEngine::update(int _timeStep)
   {
-    return 0;
+	  
+	bob->update(_timeStep);//move in a game word variable and update in function above?
+    return;
   }
+
+	GameActor& GameplayEngine::getActor()
+	{
+		return *bob;
+	}
 }

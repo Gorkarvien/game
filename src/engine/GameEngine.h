@@ -1,14 +1,27 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 
+#include <SFML/System.hpp>
+
 namespace sf
 {
 	class RenderWindow;
 }
 
+namespace module
+{
+	class DebugModule;
+}
+
+namespace TFG
+{
+	class GameplayEngine;
+}
+
 namespace engine
 {
 	class InputsEngine;
+	class GraphicsEngine;
 
 	class GameEngine
 	{
@@ -21,6 +34,19 @@ namespace engine
 			int initialization();
 			int main_loop();
 			void processInput(sf::RenderWindow * window,InputsEngine* inputsEngine);
+
+		private:
+			TFG::GameplayEngine* m_gameplayEngine; 
+			InputsEngine* m_inputsEngine;
+			GraphicsEngine* m_graphicsEngine;
+			sf::RenderWindow* m_window;
+
+
+			sf::Clock m_clock;
+
+
+			//to clean
+			module::DebugModule* debug;
 	};
 }
 

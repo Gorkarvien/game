@@ -17,7 +17,7 @@ namespace engine
     //pomme_graphEngine = this;
   }
 
-  int GraphicsEngine::update(TFG::GameActor& bob)
+  int GraphicsEngine::update(const TFG::GameActor& bob)
   {
     window->clear();
     // tmp

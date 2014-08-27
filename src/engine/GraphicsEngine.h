@@ -21,7 +21,7 @@ namespace engine
     {
       delete window;
     }
-    int update(TFG::GameActor& bob);
+    int update(const TFG::GameActor& bob);
     sf::RenderWindow *render_window() {return window;}
   };
 }

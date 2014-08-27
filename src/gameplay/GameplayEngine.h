@@ -4,7 +4,20 @@
 
 namespace TFG
 {
-  int update(sf::Time &elapsed);
+	class GameActor;
+
+	class GameplayEngine
+	{
+		public:
+			GameplayEngine();
+			void init();
+			void update(int _timeStep);
+			GameActor& getActor();
+
+		private:
+			GameActor* bob;
+
+	};
 }
 
 #endif
