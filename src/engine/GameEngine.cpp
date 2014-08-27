@@ -15,6 +15,7 @@ namespace engine
 		m_window = m_graphicsEngine->render_window();
 		debug = new module::DebugModule();
 		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
+		m_physicsEngine = new PhysicEngine();
 		
 		return 0;
 	}
@@ -52,20 +53,20 @@ namespace engine
 		elapsed_time = m_clock.restart();
 		frameSkiped = 0;
 		gameLag += elapsed_time.asMilliseconds();
-        std::cout <<elapsed_time.asMilliseconds() << std::endl;
+       // std::cout <<elapsed_time.asMilliseconds() << std::endl;
 
 		processInput(m_window,m_inputsEngine);
 
  		while(gameLag >= MS_PER_UPDATE && frameSkiped < MAX_FRAME_SKIP)
 		{
-         std::cout << "game_update" << std::endl;
+         //std::cout << "game_update" << std::endl;
 			m_gameplayEngine->update(MS_PER_UPDATE);
 			frameSkiped ++;
 			gameLag-=MS_PER_UPDATE;
 		}
-
+		m_physicsEngine->simulateWorld();
 		m_graphicsEngine->update(m_gameplayEngine->getActor());
-		debug->update(elapsed_time);
+		//debug->update(elapsed_time);
 
       //pour empecher un bug de temp d'update nul en ms
 	  elapsed_time = m_clock.getElapsedTime();
