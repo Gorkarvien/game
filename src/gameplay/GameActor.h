@@ -3,16 +3,18 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <Box2D/Box2D.h>
 
 namespace TFG{
 
+	class PhysicsEngine;
 
 	//a la place d'un element drawable game actor devrai heriter de drawable
 
 	class GameActor : public sf::Drawable
 	{
 		public:
-			GameActor();
+			GameActor(PhysicsEngine&);
 			~GameActor();
 
 			void update(int);
@@ -34,6 +36,12 @@ namespace TFG{
 			float	m_speed;
 
 		private:
+
+			b2BodyDef m_bodyDef;
+			b2Body* m_body;
+			b2PolygonShape m_dynamicBox;
+			b2FixtureDef m_fixtureDef;
+
 	};
 
 

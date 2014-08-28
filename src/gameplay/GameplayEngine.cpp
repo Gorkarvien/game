@@ -10,8 +10,8 @@ namespace TFG
 	}
 
 	void GameplayEngine::init(){
-		bob= new GameActor();
 		m_physicsEngine = new PhysicsEngine();
+		bob= new GameActor(*m_physicsEngine);
 	}
 
   void GameplayEngine::update(int _timeStep)

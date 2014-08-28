@@ -13,6 +13,12 @@ public:
 	PhysicsEngine();
 	~PhysicsEngine();
 	void simulateWorld();
+	b2Body* addToSimulation(const b2BodyDef*);
+
+	static const float m_pxScale;
+	static float meterToPx(float);
+	static float pxToMeter(float);
+
 
 private:
 	//world
@@ -26,10 +32,6 @@ private:
 	b2PolygonShape m_groundBox;
 
 	// Box
-	b2BodyDef m_bodyDef;
-	b2Body* m_body;
-	b2PolygonShape m_dynamicBox;
-	b2FixtureDef m_fixtureDef;
 
 	float32 m_timeStep; // just for tests
 	int32 m_velocityIterations;
