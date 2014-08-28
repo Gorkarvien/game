@@ -1,10 +1,17 @@
+#ifndef PHYSICS_ENGINE_H
+#define PHYSICS_ENGINE_H
 #pragma once
 #include <Box2D/Box2D.h>
-class PhysicEngine
+
+
+namespace TFG
+{
+
+class PhysicsEngine
 {
 public:
-	PhysicEngine();
-	~PhysicEngine();
+	PhysicsEngine();
+	~PhysicsEngine();
 	void simulateWorld();
 
 private:
@@ -31,3 +38,6 @@ private:
 
 };
 
+
+}
+#endif

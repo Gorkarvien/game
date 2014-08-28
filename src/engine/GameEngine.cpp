@@ -15,7 +15,6 @@ namespace engine
 		m_window = m_graphicsEngine->render_window();
 		debug = new module::DebugModule();
 		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
-		m_physicsEngine = new PhysicEngine();
 		
 		return 0;
 	}
@@ -64,7 +63,6 @@ namespace engine
 			frameSkiped ++;
 			gameLag-=MS_PER_UPDATE;
 		}
-		m_physicsEngine->simulateWorld();
 		m_graphicsEngine->update(m_gameplayEngine->getActor());
 		//debug->update(elapsed_time);
 

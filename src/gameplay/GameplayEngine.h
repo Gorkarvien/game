@@ -5,6 +5,7 @@
 namespace TFG
 {
 	class GameActor;
+	class PhysicsEngine;
 
 	class GameplayEngine
 	{
@@ -16,6 +17,7 @@ namespace TFG
 
 		private:
 			GameActor* bob;
+			PhysicsEngine* m_physicsEngine;
 
 	};
 }

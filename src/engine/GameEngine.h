@@ -2,7 +2,6 @@
 #define GAME_ENGINE_H
 
 #include <SFML/System.hpp>
-#include "PhysicEngine.h"
 
 namespace sf
 {
@@ -41,7 +40,6 @@ namespace engine
 			InputsEngine* m_inputsEngine;
 			GraphicsEngine* m_graphicsEngine;
 			sf::RenderWindow* m_window;
-			PhysicEngine* m_physicsEngine;
 
 
 			sf::Clock m_clock;

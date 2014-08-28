@@ -1,7 +1,9 @@
 #include "PhysicEngine.h"
 
 
-PhysicEngine::PhysicEngine()
+namespace TFG
+{
+PhysicsEngine::PhysicsEngine()
 {
 	m_gravity.Set(0.0f,-10.0f);
 	m_world = new b2World(m_gravity);
@@ -27,16 +29,17 @@ PhysicEngine::PhysicEngine()
 }	
 
 
-PhysicEngine::~PhysicEngine()
+PhysicsEngine::~PhysicsEngine()
 {
 	// need to see if all memory is freed 
 	delete m_world;
 }
 
-void PhysicEngine::simulateWorld()
+void PhysicsEngine::simulateWorld()
 {
 	m_world->Step(m_timeStep, m_velocityIterations, m_positionIterations);
 	b2Vec2 position = m_body->GetPosition();
 	float32 angle = m_body->GetAngle();
 	printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+}
 }
