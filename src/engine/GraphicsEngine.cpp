@@ -26,7 +26,7 @@ namespace engine
     // end tmp
     window->draw(shape);
     window->draw(bob);
-    window->display();
+    //window->display();
     return 0;
   }
 }

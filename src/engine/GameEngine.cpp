@@ -13,7 +13,7 @@ namespace engine
 		m_graphicsEngine = new GraphicsEngine();
 		m_gameplayEngine = new TFG::GameplayEngine();
 		m_window = m_graphicsEngine->render_window();
-		debug = new module::DebugModule();
+		debug = new module::DebugModule(m_graphicsEngine);
 		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
 		
 		return 0;
