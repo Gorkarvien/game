@@ -3,17 +3,22 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include "Renderable.h"
+
+namespace engine{
+	class GraphicsEngine;
+}
 
 namespace TFG{
 
 
 	//a la place d'un element drawable game actor devrai heriter de drawable
 
-	class GameActor : public sf::Drawable
+	class GameActor : public sf::Drawable, public engine::Renderable
 	{
 		public:
 			GameActor();
-			~GameActor();
+			virtual ~GameActor();
 
 			void update(int);
 			virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -24,6 +29,8 @@ namespace TFG{
 			void setmoveLeft	(bool b){m_moveLeft = b;}
 
 			sf::Drawable* m_shape;
+
+			void callToRender(engine::GraphicsEngine& _graphicsEngine, sf::Time _timeSinceGameUpdate);
 
 		protected:
 

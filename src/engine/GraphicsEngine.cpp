@@ -1,5 +1,6 @@
 #include "GraphicsEngine.h"
 #include "GameActor.h"
+#include "Renderable.h"
 
 namespace engine
 {
@@ -28,6 +29,31 @@ namespace engine
     window->draw(bob);
     //window->display();
     return 0;
+  }
+
+  void GraphicsEngine::render(sf::Time _timeSinceGameUpdate)
+  {
+	  window->clear();
+	  this->notifyRenderable(_timeSinceGameUpdate);
+	  while(!m_renderQueue.empty())
+	  {
+		window->draw(*(m_renderQueue.top().m_drawable));
+		m_renderQueue.pop();
+	  }
+	  window->display();
+  }
+
+  void GraphicsEngine::registerRenderable(Renderable& _observer)
+  {
+	  m_renderableList.push_back(&_observer);
+  }
+
+  void GraphicsEngine::notifyRenderable(sf::Time _timeSinceGameUpdate)
+  {
+	  for(std::vector<Renderable*>::iterator it= m_renderableList.begin(); it!=m_renderableList.end(); it++)
+	  {
+		  (*it)->callToRender(*this,_timeSinceGameUpdate);
+	  }
   }
 
   void GraphicsEngine::addToRenderQueue(sf::Drawable& _asset, unsigned short int _zbuf)

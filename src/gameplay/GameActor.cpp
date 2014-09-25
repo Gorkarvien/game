@@ -1,4 +1,5 @@
 #include "GameActor.h"
+#include "GraphicsEngine.h"
 
 
 namespace TFG
@@ -39,6 +40,10 @@ namespace TFG
 		target.draw(*m_shape, states);
 	}
 
+	void GameActor::callToRender(engine::GraphicsEngine& _graphicsEngine, sf::Time _timeSinceGameUpdate)
+	{
+		_graphicsEngine.addToRenderQueue(*m_shape,2); //dat magic number ;)
+	}
 
 	GameActor::~GameActor()
 	{
