@@ -29,4 +29,11 @@ namespace engine
     //window->display();
     return 0;
   }
+
+  void GraphicsEngine::addToRenderQueue(sf::Drawable& _asset, unsigned short int _zbuf)
+  {
+	  RenderOperation renderOperation(_asset,_zbuf); 
+	  m_renderQueue.push(renderOperation);
+  }
+
 }
