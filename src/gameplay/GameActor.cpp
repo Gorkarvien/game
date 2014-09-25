@@ -39,17 +39,16 @@ namespace TFG
 			m_body->ApplyLinearImpulse(b2Vec2(0.0f, -10.0f),m_body->GetWorldCenter(),true);
 			m_state = JUMP;
 		}
-		/*if(m_moveDown){
-			offsetY+=m_speed*_elasped_time/1000;
-		}
+		
 		if(m_moveLeft){
-			offsetX-=m_speed*_elasped_time/1000;
+			m_body->ApplyForceToCenter(b2Vec2(-50.0f,0.0f),true); 
 		}
+		
 		if(m_moveRight){
-			offsetX+=m_speed*_elasped_time/1000;
+			m_body->ApplyForceToCenter(b2Vec2(50.0f, 0.0f), true);
 		}
-		dynamic_cast<sf::RectangleShape*>(m_shape)->move(offsetX, offsetY);
-		*/
+		//dynamic_cast<sf::RectangleShape*>(m_shape)->move(offsetX, offsetY);
+		
 		b2Vec2 position = m_body->GetPosition();
 		dynamic_cast<sf::RectangleShape*>(m_shape)->setPosition(PhysicsEngine::meterToPx(position.x),PhysicsEngine::meterToPx(position.y));
 		if (m_body->GetLinearVelocity().y == 0.0f)
