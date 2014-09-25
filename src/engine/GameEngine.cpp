@@ -14,8 +14,7 @@ namespace engine
 		m_gameplayEngine = new TFG::GameplayEngine();
 		m_window = m_graphicsEngine->render_window();
 		debug = new module::DebugModule();
-		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
-		
+		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 		
 		return 0;
 	}
 	void GameEngine::processInput(sf::RenderWindow * window,InputsEngine* inputsEngine)

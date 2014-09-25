@@ -11,6 +11,8 @@ namespace TFG{
 
 	//a la place d'un element drawable game actor devrai heriter de drawable
 
+	enum ActorState {SLEEP, JUMP};
+
 	class GameActor : public sf::Drawable
 	{
 		public:
@@ -34,10 +36,11 @@ namespace TFG{
 			bool	m_moveLeft;
 			bool	m_moveRight;
 			float	m_speed;
+			ActorState m_state; 
 
 		private:
 
-			b2BodyDef m_bodyDef;
+			b2BodyDef m_bodyDef; // Is copied by box 2D into body so may not need to be a member (argument)
 			b2Body* m_body;
 			b2PolygonShape m_dynamicBox;
 			b2FixtureDef m_fixtureDef;
