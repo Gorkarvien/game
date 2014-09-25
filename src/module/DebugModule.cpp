@@ -28,6 +28,8 @@ m_fpsDisplay.setCharacterSize(14);
 //m_fpsDisplay.setColor(sf::Color::Yellow);
 m_fpsDisplay.setPosition(20,20);
 
+
+_graphicsEngine->registerRenderable(*this);
         return;
     }
     int DebugModule::update(sf::Time _timeSinceLastFrame){
@@ -46,10 +48,14 @@ m_fpsDisplay.setPosition(20,20);
 		
 		m_fpsDisplay.setString(text);
 
-        m_graphicsEngine.render_window()->draw(m_fpsDisplay);
-        m_graphicsEngine.render_window()->display();
+        //m_graphicsEngine.render_window()->draw(m_fpsDisplay);
+       // m_graphicsEngine.render_window()->display();
 
         return 0;
     }
 
+	void DebugModule::callToRender(engine::GraphicsEngine& _graphicsEngine, sf::Time _timeSinceGameUpdate)
+	{
+		_graphicsEngine.addToRenderQueue(m_fpsDisplay,0); 
+	}
 }

@@ -1,11 +1,13 @@
 #include "GameplayEngine.h"
 #include "GameActor.h"
+#include "Renderable.h"
 
 namespace TFG
 {
-	GameplayEngine::GameplayEngine()
+	GameplayEngine::GameplayEngine(engine::GraphicsEngine* _graphEngine)
 	{
 		this->init();
+		_graphEngine->registerRenderable(*bob);
 	}
 
 	void GameplayEngine::init(){

@@ -3,6 +3,7 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include "Renderable.h"
 
 #include <iostream>
 namespace engine
@@ -12,7 +13,7 @@ namespace engine
 
 namespace module
 {
-  class DebugModule
+  class DebugModule:public engine::Renderable
   {
   protected:
       engine::GraphicsEngine& m_graphicsEngine;
@@ -25,8 +26,9 @@ namespace module
       static const int m_nbFpsSample=30;
   public:
     DebugModule(engine::GraphicsEngine*);
-    ~DebugModule();
+	virtual ~DebugModule(){}
     int update(sf::Time);
+	void callToRender(engine::GraphicsEngine& _graphicsEngine, sf::Time _timeSinceGameUpdate);
   };
 }
 #endif

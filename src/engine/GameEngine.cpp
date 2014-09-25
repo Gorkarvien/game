@@ -11,7 +11,7 @@ namespace engine
 	int GameEngine::initialization()
 	{
 		m_graphicsEngine = new GraphicsEngine();
-		m_gameplayEngine = new TFG::GameplayEngine();
+		m_gameplayEngine = new TFG::GameplayEngine(m_graphicsEngine);
 		m_window = m_graphicsEngine->render_window();
 		debug = new module::DebugModule(m_graphicsEngine);
 		m_inputsEngine = new InputsEngine(m_gameplayEngine->getActor()); 
@@ -64,8 +64,9 @@ namespace engine
 			gameLag-=MS_PER_UPDATE;
 		}
 
-		m_graphicsEngine->update(m_gameplayEngine->getActor());
+		//m_graphicsEngine->update(m_gameplayEngine->getActor());
 		debug->update(elapsed_time);
+		m_graphicsEngine->render(elapsed_time);//time bidon !
 
       //pour empecher un bug de temp d'update nul en ms
 	  elapsed_time = m_clock.getElapsedTime();

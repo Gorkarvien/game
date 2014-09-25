@@ -1,6 +1,7 @@
 #ifndef GAMEPLAY_ENGINE_H
 #define GAMEPLAY_ENGINE_H
 #include <SFML/System.hpp>
+#include "GraphicsEngine.h"
 
 namespace TFG
 {
@@ -9,7 +10,7 @@ namespace TFG
 	class GameplayEngine
 	{
 		public:
-			GameplayEngine();
+			GameplayEngine(engine::GraphicsEngine* _graphEngine);
 			void init();
 			void update(int _timeStep);
 			GameActor& getActor();
