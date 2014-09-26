@@ -1,7 +1,10 @@
 #ifndef GAMEPLAY_ENGINE_H
 #define GAMEPLAY_ENGINE_H
 #include <SFML/System.hpp>
-#include "GraphicsEngine.h"
+
+namespace engine{
+	class GraphicsEngine;
+}
 
 namespace TFG
 {

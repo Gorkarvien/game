@@ -1,6 +1,7 @@
 #include "GameplayEngine.h"
 #include "GameActor.h"
 #include "Renderable.h"
+#include "GraphicsEngine.h"
 
 namespace TFG
 {

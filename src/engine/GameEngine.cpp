@@ -64,7 +64,6 @@ namespace engine
 			gameLag-=MS_PER_UPDATE;
 		}
 
-		//m_graphicsEngine->update(m_gameplayEngine->getActor());
 		debug->update(elapsed_time);
 		m_graphicsEngine->render(elapsed_time);//time bidon !
 

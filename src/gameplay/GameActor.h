@@ -12,9 +12,9 @@ namespace engine{
 namespace TFG{
 
 
-	//a la place d'un element drawable game actor devrai heriter de drawable
+	//a la place d'un element drawable game actor devrai heriter de renderable uniquement ? 
 
-	class GameActor : public sf::Drawable, public engine::Renderable
+	class GameActor : public engine::Renderable
 	{
 		public:
 			GameActor();

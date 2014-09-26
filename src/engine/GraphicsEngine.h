@@ -24,13 +24,11 @@ namespace engine
 	std::vector<Renderable*> m_renderableList;
 
   public:
-      GraphicsEngine();
-      static GraphicsEngine* CreateGraphicsEngine();
+     GraphicsEngine();
     ~GraphicsEngine()
     {
       delete window;
     }
-    int update(const TFG::GameActor& bob);
     sf::RenderWindow *render_window() {return window;}
 
 	void registerRenderable(Renderable&);
